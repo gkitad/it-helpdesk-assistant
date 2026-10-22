@@ -2,6 +2,8 @@
 
 An AI triage assistant for an IT service desk. An employee describes a problem in plain words; the assistant turns it into a ticket with a priority, category, safe self-service troubleshooting steps and a handoff note for the technician who picks it up if the steps don't work.
 
+**Live demo:** https://it-helpdesk-assistant-three.vercel.app/
+
 Built by [Anthony Jaimez](https://portfolio-eosin-delta-24.vercel.app/), drawing on 5+ years of Tier 1 and Tier 2 enterprise support.
 
 ## How it works
