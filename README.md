@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Helpdesk Assistant
 
-## Getting Started
+An AI triage assistant for an IT service desk. An employee describes a problem in plain words; the assistant turns it into a ticket with a priority, category, safe self-service troubleshooting steps and a handoff note for the technician who picks it up if the steps don't work.
 
-First, run the development server:
+Built by [Anthony Jaimez](https://portfolio-eosin-delta-24.vercel.app/), drawing on 5+ years of Tier 1 and Tier 2 enterprise support.
+
+## How it works
+
+1. **Retrieval.** The description is matched against a knowledge base of help desk runbooks (`src/kb/articles.ts`) using BM25 ranking (`src/lib/retrieve.ts`). Weak matches are dropped so unrelated articles don't leak into the answer.
+2. **Triage.** The description and the matched runbooks go to Claude (`claude-haiku-5-5`) with structured outputs, so the response always fits a typed ticket schema (`src/lib/triage.ts`). The system prompt encodes service desk policy: no admin-only steps for end users, identity verification stays with technicians, and anything that looks like phishing or a compromised account becomes a P1 for Security.
+3. **Resolution.** The user confirms whether the steps worked. The ticket either closes or escalates with the handoff note. Every ticket lands in a queue with resolution stats.
+
+Citations are checked server-side: the ticket can only reference articles that were actually retrieved for it.
+
+## Stack
+
+- Next.js (App Router), React, TypeScript
+- Claude API via `@anthropic-ai/sdk`, structured outputs with Zod
+- BM25 retrieval implemented from scratch, no vector database
+- Tickets stored in the browser (localStorage) — nothing persists on the server
+
+## Running locally
 
 ```bash
+npm install
+cp .env.example .env.local   # add your ANTHROPIC_API_KEY
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To work on the UI without an API key, set `MOCK_TRIAGE=1` in `.env.local`; the API then returns tickets built straight from the matched runbook.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Retrieval eval
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run eval:retrieval
+```
 
-## Learn More
+Runs sample tickets through retrieval and checks each one finds the expected runbook, including a non-IT request that should match nothing.
 
-To learn more about Next.js, take a look at the following resources:
+## Guardrails on the public demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Descriptions are capped at 1,500 characters.
+- Each visitor is limited to 8 tickets per 10 minutes.
+- The API key lives only on the server, and the Claude Console spend limit caps monthly cost.
