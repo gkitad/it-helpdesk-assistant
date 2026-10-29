@@ -32,7 +32,7 @@ function save(tickets: StoredTicket[]) {
   try {
     localStorage.setItem(KEY, JSON.stringify(tickets));
   } catch {
-    // Storage blocked (private mode, etc.) — the current page still works.
+    // Storage blocked (private mode, etc.). The current page still works.
   }
   window.dispatchEvent(new Event(EVENT));
 }

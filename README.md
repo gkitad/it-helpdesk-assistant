@@ -19,7 +19,7 @@ Citations are checked server-side: the ticket can only reference articles that w
 - Next.js (App Router), React, TypeScript
 - Claude API via `@anthropic-ai/sdk`, structured outputs with Zod
 - BM25 retrieval implemented from scratch, no vector database
-- Tickets stored in the browser (localStorage) — nothing persists on the server
+- Tickets stored in the browser (localStorage), so nothing persists on the server
 
 ## Running locally
 

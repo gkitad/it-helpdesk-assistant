@@ -28,7 +28,7 @@ export const articles: Article[] = [
       "User cannot log in, account locked, too many attempts, password not accepted, locked out of Windows or Microsoft 365.",
     steps: [
       "Confirm the user's identity using your verification policy before touching the account.",
-      "Check whether a phone, tablet or mapped drive is still using an old password and retrying in the background — this is the most common cause of repeat lockouts.",
+      "Check whether a phone, tablet or mapped drive is still using an old password and retrying in the background. This is the most common cause of repeat lockouts.",
       "Unlock the account in Active Directory or the Entra admin center.",
       "If the password expired, start a reset through self-service password reset or reset it with must-change-at-next-sign-in enabled.",
       "Have the user sign out of every device and sign back in with the new password.",
@@ -44,13 +44,13 @@ export const articles: Article[] = [
       "Authenticator app not getting push notifications, MFA code rejected, got a new phone, lost phone, cannot approve sign-in, two-factor.",
     steps: [
       "Verify the user's identity before changing any authentication method.",
-      "Ask the user to check that the phone's date and time are set automatically — codes fail when the clock drifts.",
+      "Ask the user to check that the phone's date and time are set automatically, because codes fail when the clock drifts.",
       "Have them open the authenticator app directly, pull to refresh, and approve any pending request.",
       "For a new or lost phone, require re-registration of MFA methods in the admin center and walk them through setting up the app again.",
       "If the old phone was lost, sign the user out of all sessions.",
     ],
     escalateWhen:
-      "The user reports MFA prompts they did not trigger — treat as a possible compromised password and escalate to Security immediately.",
+      "The user reports MFA prompts they did not trigger. Treat it as a possible compromised password and escalate to Security immediately.",
   },
   {
     id: "KB003",
@@ -61,7 +61,7 @@ export const articles: Article[] = [
     steps: [
       "Confirm the computer has working internet without the VPN by opening a public website.",
       "Restart the VPN client completely, or reboot if it was left running across sleep.",
-      "Check the clock and time zone — certificate-based VPNs fail when the time is wrong.",
+      "Check the clock and time zone. Certificate-based VPNs fail when the time is wrong.",
       "If on hotel, airport or public Wi-Fi, accept the captive portal page first, then try again; try a phone hotspot to rule out the network.",
       "Make sure the client is on the current version and the user's password has not just expired.",
     ],
@@ -95,7 +95,7 @@ export const articles: Article[] = [
       "Start Outlook in safe mode (outlook.exe /safe). If it opens, disable add-ins one at a time to find the culprit.",
       "Run a Quick Repair of Microsoft 365 from Apps & features, then an Online Repair if the problem persists.",
       "Create a new Outlook profile from Control Panel > Mail and set it as the default.",
-      "Check free disk space — a full drive can stop the mailbox cache from opening.",
+      "Check free disk space. A full drive can stop the mailbox cache from opening.",
     ],
     escalateWhen:
       "Outlook on the web also fails for the user, which points to the mailbox rather than the computer (escalate to Tier 2 / Messaging).",
@@ -146,7 +146,7 @@ export const articles: Article[] = [
       "Reset OneDrive with onedrive.exe /reset if the client is unresponsive.",
     ],
     escalateWhen:
-      "Files appear to be missing or overwritten — stop and escalate to Tier 2 before any reset so version history can be recovered.",
+      "Files appear to be missing or overwritten. Stop and escalate to Tier 2 before any reset so version history can be recovered.",
   },
   {
     id: "KB009",
@@ -187,7 +187,7 @@ export const articles: Article[] = [
     symptoms:
       "Laptop very slow, freezing, high CPU, high memory, takes forever to boot, apps lagging, fan loud.",
     steps: [
-      "Ask when it started and whether anything changed — a new app, an update or a full disk.",
+      "Ask when it started and whether anything changed, like a new app, an update or a full disk.",
       "Restart the computer; many slowness tickets come from machines not rebooted in weeks.",
       "Open Task Manager and sort by CPU, memory and disk to find the process responsible.",
       "Free disk space if the system drive is above 90% full, and remove startup apps the user doesn't need.",
@@ -222,7 +222,7 @@ export const articles: Article[] = [
       "Verify the user's identity before giving out any recovery key.",
       "Look up the key in Entra ID, Intune or Active Directory using the key ID shown on the screen.",
       "Read the key to the user over a verified channel and have them enter it.",
-      "Once in, ask what changed — BIOS update, dock or hardware change — since those commonly trigger the prompt.",
+      "Once in, ask what changed (a BIOS update, a new dock or other hardware), since those commonly trigger the prompt.",
     ],
     escalateWhen:
       "No recovery key is on file for the device, or the prompt keeps returning after every reboot (escalate to Tier 2).",
@@ -240,7 +240,7 @@ export const articles: Article[] = [
       "Note the time, the sender and what the user did, for the security team.",
     ],
     escalateWhen:
-      "Always escalate to Security when the user clicked, entered credentials or opened an attachment — this is a P1 regardless of how calm the user is.",
+      "Always escalate to Security when the user clicked, entered credentials or opened an attachment. This is a P1 regardless of how calm the user is.",
   },
   {
     id: "KB015",

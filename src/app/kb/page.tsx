@@ -3,7 +3,7 @@ import styles from "../ui.module.css";
 import { articles } from "@/kb/articles";
 
 export const metadata: Metadata = {
-  title: "Knowledge base — Helpdesk Assistant",
+  title: "Knowledge base | Helpdesk Assistant",
 };
 
 export default function KnowledgeBase() {

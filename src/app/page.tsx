@@ -63,9 +63,9 @@ export default function NewTicket() {
       <section className={styles.intake}>
         <h1 className={styles.pageTitle}>What&apos;s going wrong?</h1>
         <p className={styles.lede}>
-          Describe the problem the way you&apos;d tell a coworker. The assistant files a ticket,
-          sets its priority, and walks you through fixes from the help desk&apos;s runbooks — or
-          hands it to a technician with notes.
+          Describe the problem the way you&apos;d tell a coworker. It files a ticket, sets the
+          priority and walks you through fixes from the help desk&apos;s runbooks. If it can&apos;t be
+          fixed from your desk, it goes to a technician with notes.
         </p>
 
         <form onSubmit={submit} className={styles.form}>
