@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <footer className={styles.footer}>
           <p>
             A portfolio project by{" "}
-            <a href="https://portfolio-eosin-delta-24.vercel.app/">Anthony Jaimez</a>. Triage
+            <a href="https://www.anthonyjaimez.com/">Anthony Jaimez</a>. Triage
             runs on the Claude API; tickets stay in your browser.{" "}
             <a href="https://github.com/gkitad/it-helpdesk-assistant">Source on GitHub</a>
           </p>

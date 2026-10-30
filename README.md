@@ -4,7 +4,7 @@ An AI triage assistant for an IT service desk. An employee describes a problem i
 
 **Live demo:** https://it-helpdesk-assistant-three.vercel.app/
 
-Built by [Anthony Jaimez](https://portfolio-eosin-delta-24.vercel.app/), drawing on 5+ years of Tier 1 and Tier 2 enterprise support.
+Built by [Anthony Jaimez](https://www.anthonyjaimez.com/), drawing on 5+ years of Tier 1 and Tier 2 enterprise support.
 
 ## How it works
 
